@@ -9,7 +9,7 @@ img = Image.open(r)
 img.show()
 img.save('src.png')
 
-print(img.get_format_mimetype)
+# print(img.get_format_mimetype)
 
 BUF_SIZE = 1024
 with open('src.png','rb') as sf , open('dst.png','wb') as df:   
