@@ -378,6 +378,7 @@ pseudo_img = des_img[:,:,0]
 
 print(pseudo_img)
 
+
 plt.suptitle('이미지 프로세싱',  fontsize = 18)
 plt.subplot(1,2,1)
 plt.title('원본 이미지')
