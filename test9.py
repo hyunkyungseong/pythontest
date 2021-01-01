@@ -288,6 +288,108 @@
 # print(urllib.__package__)
 
 ## __name__  :  변수이름이 아니라  정의 시 정의된 이름
-import  myPackage.moduleA
+# # 2-7
+# class NasdaqStock:
+#     """
+#     Class for NASDAQ stocks
+#     """
+#     count = 0
+#     def __init__(self,symbol,price):
+#         """
+#         생성자
+#         """
+#         self.symbol = symbol
+#         self.price = price
+#         NasdaqStock.count += 1
+#         print('생성자 __init__({},{:.2f}) > count : {}'.format(self.symbol,self.price,NasdaqStock.count))
 
+#     def __del__(self):
+#         """
+#         소멸자
+#         """
+#         print('Calling __del__({})'.format(self))
+
+# gg=NasdaqStock('GOOG',1154.05)
+# del(gg)
+
+# ms=NasdaqStock('MSFT',102.44)
+# del(ms)
+
+# amz = NasdaqStock('AMZN',1746.00)
+# del(amz)
+
+# print(help(NasdaqStock))
+
+
+# 2-8 
+# import requests
+# url = 'http://bit.ly/2JnsHnT'
+# r = requests.get(url,stream=True).raw
+
+# # print(help(requests))
+
+# from PIL import Image 
+# img = Image.open(r)
+# img.show()
+# img.save('src.png')
+
+# # print(img.get_format_mimetype)
+# ## with as 파일 객체 
+# BUF_SIZE = 1024
+# with open('src.png','rb') as sf , open('dst.png','wb') as df:   
+#     while True:
+#         data = sf.read(BUF_SIZE)
+        
+#         if not data :
+#             break
+#         df.write(data)
+
+# import hashlib
+
+# sha_src = hashlib.sha256()      # 해쉬 객체 생성
+# sha_des = hashlib.sha256()
+
+# with open('src.png','rb') as sf , open('dst.png','rb') as df:       # 파일객체 생성
+#     sha_src.update(sf.read())                   # 해쉬객체 update
+#     sha_des.update(df.read())
+
+# print('소스 해쉬 : {}'.format(sha_src.hexdigest()))
+# print('타겟 해쉬 : {}'.format(sha_des.hexdigest()))
+
+# print(sha_src.hexdigest().__len__())
+
+# if sha_src.hexdigest() == sha_des.hexdigest():
+#     print('값이 일치합니다...')
+
+#맷플롯립   :  데이터 시각화 라이브러리 - 각종 그래프 나 이미지 처리에 사용된다.
+# 그래프 및 지형도 기상도 등의 이미지를 기반으로 데이터를 시각화할 때도 자주 쓰인다.
+# 의사 색상 : 이미지의 색상대비를 향상시켜서 데이터를 쉽게 시각화하는 용도로 사용함.
+# png 이미지만 지원한다.
+# RGB  채널별로 8비트 데이터 (0~255)를  0.0 ~ 1.0 사이의 부동소수점 데이터로 재조정해서 기록한다    
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+des_img = mpimg.imread('dst.png')
+
+print(des_img)
+
+pseudo_img = des_img[:,:,0]
+
+print(pseudo_img)
+
+plt.suptitle('이미지 프로세싱',  fontsize = 18)
+plt.subplot(1,2,1)
+plt.title('원본 이미지')
+plt.imshow(mpimg.imread('src.png'))
+
+plt.subplot(122)
+plt.title('사본 이미지')
+dst_img = mpimg.imread('dst.png')
+
+pseudo_img = dst_img[:,:,1]
+
+plt.imshow(pseudo_img)
+
+plt.show()
 
